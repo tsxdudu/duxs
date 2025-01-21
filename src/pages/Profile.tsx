@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Instagram, Music2, Star } from 'lucide-react';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import SocialLink from '@/components/SocialLink';
 import Particles from '@/components/Particles';
 
 const Profile = () => {
+  const [viewCount, setViewCount] = useState(0);
+
+  useEffect(() => {
+    // Get the current timestamp
+    const now = new Date().getTime();
+    
+    // Check if this user has viewed the profile before
+    const lastVisit = localStorage.getItem('lastProfileVisit');
+    const viewsCount = parseInt(localStorage.getItem('profileViews') || '0');
+    
+    // If no visit recorded or last visit was more than 1 hour ago
+    if (!lastVisit || (now - parseInt(lastVisit)) > 3600000) {
+      // Update the view count
+      const newCount = viewsCount + 1;
+      localStorage.setItem('profileViews', newCount.toString());
+      localStorage.setItem('lastProfileVisit', now.toString());
+      setViewCount(newCount);
+    } else {
+      // Just display the current count without incrementing
+      setViewCount(viewsCount);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative overflow-hidden bg-gradient-to-br from-[#1A1F2C] via-[#6E59A5] to-[#9b87f5]">
       <Particles />
@@ -68,7 +91,7 @@ const Profile = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
-        <span>254</span>
+        <span>{viewCount}</span>
       </div>
     </div>
   );
