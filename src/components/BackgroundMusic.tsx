@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import backgroundMedia from './Snaptik.app_7456593862107106565.mp4'; // Importe o arquivo diretamente
+import backgroundMedia from './background-video.mp4'; // Importe o arquivo diretamente
 
 interface BackgroundMusicProps {}
 
