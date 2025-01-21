@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import backgroundAudio from './background-audio.mp3'; // Use um arquivo de áudio
+import backgroundAudio from './background-audio.mp3'; // Certifique-se de usar um arquivo de áudio válido
 
 interface BackgroundMusicProps {}
 
@@ -8,17 +8,23 @@ const BackgroundMusic = ({}: BackgroundMusicProps) => {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.3; // Define o volume inicial
-      const playAudio = async () => {
-        try {
-          await audio.play();
-        } catch (error) {
+
+    const handleInteraction = () => {
+      if (audio) {
+        audio.volume = 0.3; // Ajusta o volume inicial
+        audio.play().catch((error) => {
           console.error('Erro ao reproduzir o áudio de fundo:', error);
-        }
-      };
-      playAudio();
-    }
+        });
+      }
+    };
+
+    // Adiciona um evento de interação para garantir que o áudio seja reproduzido
+    document.addEventListener('click', handleInteraction);
+
+    // Limpeza do evento ao desmontar o componente
+    return () => {
+      document.removeEventListener('click', handleInteraction);
+    };
   }, []);
 
   return (
