@@ -1,22 +1,22 @@
 import React, { useEffect, useRef } from 'react';
+import backgroundMedia from './Snaptik.app_7456593862107106565.mp4'; // Importe o arquivo diretamente
 
-interface BackgroundMusicProps {
-  url: string;
-}
+interface BackgroundMusicProps {}
 
-const BackgroundMusic = ({ url }: BackgroundMusicProps) => {
+const BackgroundMusic = ({}: BackgroundMusicProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.volume = 0.3;
+      audio.volume = 0.3; // Ajusta o volume inicial
     }
   }, []);
 
   return (
     <audio ref={audioRef} autoPlay loop className="hidden">
-      <source src={url} type="audio/mpeg" />
+      <source src={backgroundMedia} type="audio/mpeg" />
+      Seu navegador não suporta o elemento de áudio.
     </audio>
   );
 };
