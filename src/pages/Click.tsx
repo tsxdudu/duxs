@@ -4,10 +4,20 @@ import { useNavigate } from 'react-router-dom';
 const Click = () => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate('/profile');
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
+    <div
+      onClick={handleClick}
+      className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden"
+    >
       <button
-        onClick={() => navigate('/profile')}
+        onClick={(e) => {
+          e.stopPropagation(); // Impede o evento de clique de se propagar para o pai
+          navigate('/profile');
+        }}
         className="text-6xl font-bold hover:scale-105 transition-transform duration-300 flex items-center gap-2"
       >
         Click
