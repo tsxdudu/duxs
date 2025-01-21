@@ -1,17 +1,17 @@
 import React from 'react';
 import { Instagram, Music2, Star } from 'lucide-react';
-import Snowflakes from '@/components/Snowflakes';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import SocialLink from '@/components/SocialLink';
+import Particles from '@/components/Particles';
 
 const Profile = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start pt-12 bg-black text-white relative overflow-hidden">
-      <Snowflakes />
+    <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative overflow-hidden bg-gradient-to-br from-[#1A1F2C] via-[#6E59A5] to-[#9b87f5]">
+      <Particles />
       <BackgroundMusic url="/your-background-music.mp3" />
       
       {/* Profile Image */}
-      <div className="relative flex flex-col items-center">
+      <div className="relative flex flex-col items-center z-10">
         <img
           src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
           alt="Profile"
@@ -21,22 +21,22 @@ const Profile = () => {
       </div>
 
       {/* Bio */}
-      <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg">
+      <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
         Behind the scenes of cyber darkness, my code is the shadow that strikes fear and respect.💻
       </p>
 
       {/* Tags */}
-      <div className="flex gap-4 mb-8">
-        <span className="px-4 py-1 rounded-full bg-secondary/50 text-sm">
+      <div className="flex gap-4 mb-8 z-10">
+        <span className="px-4 py-1 rounded-full bg-[#7E69AB]/50 text-white text-sm">
           💻 Programador
         </span>
-        <span className="px-4 py-1 rounded-full bg-secondary/50 text-sm">
+        <span className="px-4 py-1 rounded-full bg-[#7E69AB]/50 text-white text-sm">
           🔒 Cybersecurity
         </span>
       </div>
 
       {/* Social Links */}
-      <div className="flex flex-col gap-4 w-full max-w-md px-4">
+      <div className="flex flex-col gap-4 w-full max-w-md px-4 z-10">
         <SocialLink href="https://instagram.com/inevitavelrs">
           <Instagram className="w-5 h-5" />
           <span>Instagram</span>
@@ -63,7 +63,7 @@ const Profile = () => {
       </div>
 
       {/* View Counter */}
-      <div className="mt-12 flex items-center gap-2 text-white/60">
+      <div className="mt-12 flex items-center gap-2 text-white/60 z-10">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

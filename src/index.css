@@ -45,9 +45,3 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
-
-.snowflake {
-  @apply fixed pointer-events-none z-10;
-  color: #A5D8FF;
-  animation: snowfall linear infinite;
-}
