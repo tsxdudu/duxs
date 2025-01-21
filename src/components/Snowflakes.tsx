@@ -10,11 +10,11 @@ const Snowflakes = () => {
   }));
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-0">
       {snowflakes.map((flake) => (
         <div
           key={flake.id}
-          className="snowflake"
+          className="snowflake absolute"
           style={{
             left: flake.left,
             animationDuration: flake.animationDuration,
@@ -25,7 +25,7 @@ const Snowflakes = () => {
           ❄
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

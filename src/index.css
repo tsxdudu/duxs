@@ -47,7 +47,7 @@
 }
 
 .snowflake {
-  @apply fixed pointer-events-none;
+  @apply fixed pointer-events-none z-10;
   color: #A5D8FF;
   animation: snowfall linear infinite;
 }

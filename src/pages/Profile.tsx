@@ -11,13 +11,13 @@ const Profile = () => {
       <BackgroundMusic url="/your-background-music.mp3" />
       
       {/* Profile Image */}
-      <div className="relative">
+      <div className="relative flex flex-col items-center">
         <img
-          src="/lovable-uploads/453c44fc-e552-4c49-8bf4-e1732a21f886.png"
+          src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
           alt="Profile"
-          className="w-32 h-32 rounded-full border-2 border-white/20"
+          className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
         />
-        <Star className="absolute top-0 right-0 text-white animate-float" />
+        <Star className="text-white mt-4 animate-float" size={24} />
       </div>
 
       {/* Bio */}
