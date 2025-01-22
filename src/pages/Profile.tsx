@@ -81,15 +81,20 @@ const Profile = () => {
   </div>
 
   {/* Spotify */}
-  <div className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40">
-    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-      <circle cx="12" cy="12" r="10" fill="#1DB954" />
-      <path d="M8 14c2-1.5 6-1.5 8 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M7 10c3-2 8-2 10 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-    <span className="text-white text-base font-medium">Spotify</span>
-  </div>
-</div>
+<a
+  href="https://open.spotify.com/user/31jau7m672eiyksjzvall2knoh3m?si=JqY6YUoZT-u0K-hdb1cpAg"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40"
+>
+  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
+    <circle cx="12" cy="12" r="10" fill="#1DB954" />
+    <path d="M8 14c2-1.5 6-1.5 8 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M7 10c3-2 8-2 10 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+  <span className="text-white text-base font-medium">Spotify</span>
+</a>
+
 
 
 
