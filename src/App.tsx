@@ -9,20 +9,20 @@ import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
-// Componente para controlar o redirecionamento
+
 const RedirectOnLoad = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Apenas redireciona se for o carregamento inicial
+    
     if (isInitialLoad) {
       navigate("/click");
-      setIsInitialLoad(false); // Marca que o carregamento inicial foi feito
+      setIsInitialLoad(false);
     }
   }, [navigate, isInitialLoad]);
 
-  return null; // Não renderiza nada
+  return null; 
 };
 
 const App = () => (
@@ -31,11 +31,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <RedirectOnLoad /> {/* Redireciona apenas no carregamento inicial */}
+        <RedirectOnLoad /> {}
         <Routes>
           <Route path="/click" element={<Click />} />
           <Route path="/profile" element={<Profile />} />
-          {/* Página 404 */}
+          {}
           <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>
       </BrowserRouter>
