@@ -54,7 +54,7 @@ const Profile = () => {
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
           <SocialLink href="https://instagram.com/tsx.duxs" className="!px-3">
-            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
+            <img src="/Instagram.png" alt="Instagram" className="w-5 h-5" />
           </SocialLink>
           <SocialLink href="https://tiktok.com/@tsx.duxs" className="!px-3">
             <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
@@ -71,11 +71,7 @@ const Profile = () => {
           rel="noopener noreferrer"
           className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40"
         >
-          <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-            <circle cx="12" cy="12" r="10" fill="#1DB954" />
-            <path d="M8 14c2-1.5 6-1.5 8 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M7 10c3-2 8-2 10 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <img src="/spotify.png" alt="Spotify" className="w-7 h-7" />
           <span className="text-white text-base font-medium">Spotify</span>
         </a>
       </div>
