@@ -11,19 +11,17 @@ const Profile = () => {
     try {
       const storedViews = localStorage.getItem('profileViews');
       const viewsCount = storedViews ? parseInt(storedViews) : 5688;
-
-      // Incrementa o contador e atualiza no localStorage
       const updatedViews = viewsCount + 1;
       setViewCount(updatedViews);
       localStorage.setItem('profileViews', updatedViews.toString());
     } catch (error) {
       console.error('Erro ao atualizar o contador de visualizações:', error);
-      setViewCount(5688); // Fallback
+      setViewCount(5688);
     }
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative overflow-hidden bg-gradient-to-br from-[#1A1F2C] via-[#6E59A5] to-[#9b87f5]">
+    <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative overflow-hidden bg-gradient-to-br from-black via-purple-900 to-purple-600">
       <BackgroundMusic />
       <Particles />
 
@@ -31,7 +29,7 @@ const Profile = () => {
         <img
           src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
           alt="Profile"
-          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')} // Fallback image
+          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
           className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
         />
         <Star className="text-white mt-4 animate-float" size={24} />
