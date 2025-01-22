@@ -4,27 +4,28 @@ import { Volume2, VolumeX } from 'lucide-react';
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [isAudioLoaded, setIsAudioLoaded] = useState<boolean>(false); // Estado para controlar se a música foi carregada
 
-  // Persistir estado do áudio no localStorage
+  // Ajustar o volume inicial a partir do localStorage para não ficar alto
   useEffect(() => {
     const storedMuteStatus = localStorage.getItem('audioMuted');
     if (storedMuteStatus) {
       setIsMuted(JSON.parse(storedMuteStatus));
     }
-  }, []);
 
-  const handlePlay = async () => {
     const audio = audioRef.current;
     if (audio) {
-      try {
-        await audio.play();
-        setIsAudioLoaded(true); // Marca que a música foi carregada
-      } catch (error) {
-        console.error('Erro ao reproduzir o áudio:', error);
-      }
+      audio.volume = 0.3; // Garantir que o volume esteja em 30% ao carregar
+      // Tocar o áudio imediatamente após o primeiro clique
+      const playAudio = async () => {
+        try {
+          await audio.play();
+        } catch (error) {
+          console.error('Erro ao reproduzir o áudio:', error);
+        }
+      };
+      playAudio();
     }
-  };
+  }, []);
 
   const toggleMute = () => {
     const audio = audioRef.current;
@@ -35,13 +36,6 @@ const BackgroundMusic = () => {
     }
   };
 
-  // O áudio só começa a tocar após o primeiro clique
-  useEffect(() => {
-    if (!isAudioLoaded) {
-      handlePlay(); // Iniciar o áudio ao carregar o componente
-    }
-  }, [isAudioLoaded]);
-
   return (
     <>
       <audio ref={audioRef} loop>
@@ -49,10 +43,7 @@ const BackgroundMusic = () => {
         Seu navegador não suporta o elemento de áudio.
       </audio>
       <button
-        onClick={() => {
-          handlePlay(); // Garantir que a música comece ao interagir
-          toggleMute();
-        }}
+        onClick={toggleMute}
         className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
       >
         {isMuted ? (
