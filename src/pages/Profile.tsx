@@ -32,12 +32,13 @@ const Profile = () => {
     className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
   />
   
-  {/* Estrela e verificado */}
-  <div className="flex items-center mt-2 gap-1 text-white">
-    <span className="text-xl">☆</span>
-    <img src="/verificado.png" alt="Verificado" className="w-5 h-5" />
+  {/* Estrela centralizada e verificado ao lado */}
+  <div className="flex items-center mt-2">
+    <span className="text-2xl text-white">☆</span>
+    <img src="/verificado.png" alt="Verificado" className="w-3 h-3 ml-1" />
   </div>
 </div>
+
 
 
       {/* Bio */}
