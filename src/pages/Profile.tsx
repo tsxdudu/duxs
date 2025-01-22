@@ -25,32 +25,26 @@ const Profile = () => {
       <Particles />
 
       <div className="relative flex flex-col items-center z-10">
-        <img
-          src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
-          alt="Profile"
-          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
-          className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
-        />
+  <img
+    src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
+    alt="Profile"
+    onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
+    className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
+  />
+  
+  {/* Estrela centralizada com verificado ao lado */}
+  <div className="relative flex items-center justify-center mt-2">
+    <span className="text-2xl text-white">☆</span>
+    <img 
+      src="/verificado.png" 
+      alt="Verificado" 
+      className="w-3 h-3 absolute right-[-12px] top-1/2 transform -translate-y-1/2" 
+    />
+  </div>
+</div>
 
-        {/* Estrela centralizada com verificado ao lado */}
-        <div className="relative flex items-center justify-center mt-2">
-          {/* Estrela maior */}
-          <span className="text-4xl text-white">☆</span>
 
-          {/* Ícone verificado com tooltip */}
-          <div className="group relative">
-            <img
-              src="/verificado.png"
-              alt="Verificado"
-              className="w-5 h-5 absolute right-[-20px] top-1/2 transform -translate-y-1/2 cursor-pointer"
-            />
-            {/* Tooltip */}
-            <span className="absolute left-1/2 bottom-[-30px] transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs px-2 py-1 rounded-md shadow-lg z-20">
-              Verificado
-            </span>
-          </div>
-        </div>
-      </div>
+
 
       {/* Bio */}
       <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
@@ -59,38 +53,40 @@ const Profile = () => {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-4 mb-8 z-10 justify-center">
-        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-          <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
-          Programador
-        </span>
-        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-          <img src="/ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
-          Cybersecurity
-        </span>
-      </div>
+  <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
+    <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
+    Programador
+  </span>
+  <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
+    <img src="/ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
+    Cybersecurity
+  </span>
+</div>
+
 
       <div className="flex flex-col items-center gap-4 w-full max-w-md px-4 z-10">
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
-          <SocialLink
-            href="https://instagram.com/tsx.duxs"
-            className="!px-3 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink
-            href="https://tiktok.com/@tsx.duxs"
-            className="!px-3 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink
-            href="https://discord.gg/vKYK4Zxp"
-            className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
-          </SocialLink>
-        </div>
+  <SocialLink
+    href="https://instagram.com/tsx.duxs"
+    className="!px-3 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
+  </SocialLink>
+  <SocialLink
+    href="https://tiktok.com/@tsx.duxs"
+    className="!px-3 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
+  </SocialLink>
+  <SocialLink
+    href="https://discord.gg/vKYK4Zxp"
+    className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
+  </SocialLink>
+</div>
+
 
         {/* Spotify */}
         <a
@@ -107,18 +103,8 @@ const Profile = () => {
       {/* View Counter */}
       <div className="mt-12 flex items-center gap-2 text-white/60 z-10">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
         <span>{viewCount}</span>
       </div>
