@@ -1,38 +1,37 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect } from "react"; // Importando useEffect
-import Click from "./pages/Click";
-import Profile from "./pages/Profile";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const queryClient = new QueryClient();
+const Click = () => {
+  const navigate = useNavigate();
 
-const App = () => {
-  const navigate = useNavigate(); // Usando o hook useNavigate
-
-  useEffect(() => {
-    // Verifica se a navegação foi um reload (F5 ou refresh)
-    if (performance.navigation.type === 1) {
-      navigate("/"); // Redireciona para a página principal (Click.tsx)
-    }
-  }, [navigate]);
+  const handleClick = () => {
+    // Get current views
+    const storedViews = localStorage.getItem('profileViews');
+    const currentViews = storedViews ? parseInt(storedViews) : 5688; // Start with 5688 if no views yet
+    
+    // Update views
+    localStorage.setItem('profileViews', (currentViews + 1).toString());
+    localStorage.setItem('lastProfileVisit', new Date().getTime().toString());
+    
+    // Navigate to profile
+    navigate('/profile');
+  };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Click />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <div 
+      onClick={handleClick}
+      className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden cursor-pointer"
+    >
+      <button
+        className="text-6xl font-bold hover:scale-105 transition-transform duration-300 flex items-center gap-2"
+      >
+        Click
+        <span role="img" aria-label="shrug" className="text-4xl">
+          🤷‍♂️
+        </span>
+      </button>
+    </div>
   );
 };
 
-export default App;
+export default Click;
