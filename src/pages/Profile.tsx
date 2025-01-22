@@ -21,7 +21,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-purple-900 to-purple-600">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
       <BackgroundMusic />
       <Particles />
 
