@@ -5,24 +5,22 @@ const Click = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // Get current views
+    // Obter o contador de visualizações atual
     const storedViews = localStorage.getItem('profileViews');
-    const currentViews = storedViews ? parseInt(storedViews) : 5688; // Start with 5688 if no views yet
-    
-    // Update views
+    const currentViews = storedViews ? parseInt(storedViews) : 5688; // Começar com 5688 se não houver visualizações ainda
+
+    // Atualizar visualizações
     localStorage.setItem('profileViews', (currentViews + 1).toString());
     localStorage.setItem('lastProfileVisit', new Date().getTime().toString());
-    
-    // Navigate to profile
+
+    // Navegar para a página de perfil
     navigate('/profile');
   };
 
   return (
-    <div 
-      onClick={handleClick}
-      className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden cursor-pointer"
-    >
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
       <button
+        onClick={handleClick}  // Vincula o clique diretamente ao botão
         className="text-6xl font-bold hover:scale-105 transition-transform duration-300 flex items-center gap-2"
       >
         Click
