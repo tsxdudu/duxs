@@ -19,6 +19,8 @@ const App = () => (
           <Route path="/profile" element={<Profile />} />
           {/* Redirecionamento direto para /click quando a página raiz (/) é acessada */}
           <Route path="/" element={<Navigate to="/click" replace />} />
+          {/* Página 404 */}
+          <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
