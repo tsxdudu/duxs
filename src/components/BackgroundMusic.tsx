@@ -4,35 +4,38 @@ import { Volume2, VolumeX } from 'lucide-react';
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [hasPlayed, setHasPlayed] = useState<boolean>(false);
 
-  // Ajustar o volume inicial a partir do localStorage para não ficar alto
+  // Usar sessionStorage para persistir o estado da música apenas durante a sessão
   useEffect(() => {
-    const storedMuteStatus = localStorage.getItem('audioMuted');
+    const storedMuteStatus = sessionStorage.getItem('audioMuted');
     if (storedMuteStatus) {
       setIsMuted(JSON.parse(storedMuteStatus));
     }
 
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.3; // Garantir que o volume esteja em 30% ao carregar
-      // Tocar o áudio imediatamente após o primeiro clique
+    if (audio && !hasPlayed) {
+      audio.volume = 0.15; // Definir volume inicial em 15%
+
+      // Garantir que o áudio toque assim que o usuário interagir
       const playAudio = async () => {
         try {
           await audio.play();
+          setHasPlayed(true); // A música tocou, então marca como "já tocada"
         } catch (error) {
           console.error('Erro ao reproduzir o áudio:', error);
         }
       };
       playAudio();
     }
-  }, []);
+  }, [hasPlayed]);
 
   const toggleMute = () => {
     const audio = audioRef.current;
     if (audio) {
       audio.muted = !audio.muted;
       setIsMuted(audio.muted);
-      localStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir estado do áudio
+      sessionStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir mute
     }
   };
 
@@ -43,7 +46,9 @@ const BackgroundMusic = () => {
         Seu navegador não suporta o elemento de áudio.
       </audio>
       <button
-        onClick={toggleMute}
+        onClick={() => {
+          toggleMute();
+        }}
         className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
       >
         {isMuted ? (
