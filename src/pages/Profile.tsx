@@ -68,17 +68,16 @@ const Profile = () => {
     </SocialLink>
   </div>
 
-  {/* Spotify com novo ícone */}
+  {/* Spotify */}
   <div className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40">
-    <svg viewBox="0 0 168 168" className="w-7 h-7" fill="currentColor">
-      <circle cx="84" cy="84" r="80" fill="#1DB954" />
-      <path d="M51 115c28-20 85-20 113 0" stroke="white" strokeWidth="8" strokeLinecap="round" />
-      <path d="M43 84c36-24 97-24 133 0" stroke="white" strokeWidth="8" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
+      <circle cx="12" cy="12" r="10" fill="#1DB954" />
+      <path d="M8 14c2-1.5 6-1.5 8 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M7 10c3-2 8-2 10 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
     <span className="text-white text-base font-medium">Spotify</span>
   </div>
 </div>
-
 
 
 
