@@ -8,28 +8,19 @@ import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
-// Create a separate component for the routes that needs navigation
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Click />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
-  );
-};
-
-const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <BrowserRouter>
-          <Toaster />
-          <Sonner />
-          <AppRoutes />
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Click />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
