@@ -25,7 +25,7 @@ const BackgroundMusic = () => {
   return (
     <>
       <audio ref={audioRef} loop>
-        <source src="/src/background-audio.mp3" type="audio/mpeg" />
+        <source src="/background-audio.mp3" type="audio/mpeg" />
       </audio>
       <button
         onClick={toggleMute}
