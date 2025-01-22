@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,13 +9,18 @@ import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
-// Componente que redireciona para "/click" em qualquer recarregamento
+// Componente para controlar o redirecionamento
 const RedirectOnLoad = () => {
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/click"); // Sempre redireciona para "/click" ao carregar/recarregar
-  }, [navigate]);
+    // Apenas redireciona se for o carregamento inicial
+    if (isInitialLoad) {
+      navigate("/click");
+      setIsInitialLoad(false); // Marca que o carregamento inicial foi feito
+    }
+  }, [navigate, isInitialLoad]);
 
   return null; // Não renderiza nada
 };
@@ -26,7 +31,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <RedirectOnLoad /> {/* Sempre redireciona para "/click" ao carregar */}
+        <RedirectOnLoad /> {/* Redireciona apenas no carregamento inicial */}
         <Routes>
           <Route path="/click" element={<Click />} />
           <Route path="/profile" element={<Profile />} />
