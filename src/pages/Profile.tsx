@@ -35,30 +35,25 @@ const Profile = () => {
         <Star className="text-white mt-4 animate-float" size={24} />
       </div>
 
+      {/* Bio */}
       <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
         Behind the scenes of cyber darkness, my code is the shadow that strikes fear and respect. 💻
       </p>
 
+      {/* Tags */}
       <div className="flex flex-wrap gap-4 mb-8 z-10 justify-center">
         <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-[#7E69AB]/50 text-white text-sm">
-          <img
-            src="programador.png"
-            alt="Programador Logo"
-            className="w-5 h-5"
-          />
+          <img src="programador.png" alt="Programador Logo" className="w-5 h-5" />
           Programador
         </span>
         <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-[#7E69AB]/50 text-white text-sm">
-          <img
-            src="ciber-seguranca.png"
-            alt="Cybersecurity Logo"
-            className="w-5 h-5"
-          />
+          <img src="ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
           Cybersecurity
         </span>
       </div>
 
       <div className="flex flex-col items-center gap-4 w-full max-w-md px-4 z-10">
+        {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
           <SocialLink href="https://instagram.com/tsx.duxs" className="!px-3">
             <Instagram className="w-5 h-5" />
@@ -75,6 +70,7 @@ const Profile = () => {
           </SocialLink>
         </div>
 
+        {/* Spotify */}
         <a
           href="https://open.spotify.com/user/31jau7m672eiyksjzvall2knoh3m?si=JqY6YUoZT-u0K-hdb1cpAg"
           target="_blank"
@@ -88,14 +84,15 @@ const Profile = () => {
           </svg>
           <span className="text-white text-base font-medium">Spotify</span>
         </a>
+      </div>
 
-        <div className="mt-12 flex items-center gap-2 text-white/60 z-10">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-          </svg>
-          <span>{viewCount}</span>
-        </div>
+      {/* View Counter */}
+      <div className="mt-12 flex items-center gap-2 text-white/60 z-10">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        <span>{viewCount}</span>
       </div>
     </div>
   );
