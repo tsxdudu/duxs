@@ -4,43 +4,44 @@ import { Volume2, VolumeX } from 'lucide-react';
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [isAudioLoaded, setIsAudioLoaded] = useState<boolean>(false); // Estado para controlar se a música foi carregada
+  const [hasPlayed, setHasPlayed] = useState<boolean>(false);
 
-  // Persistir estado do áudio no localStorage
+  // Usar sessionStorage para persistir o estado da música apenas durante a sessão
   useEffect(() => {
-    const storedMuteStatus = localStorage.getItem('audioMuted');
+    const storedMuteStatus = sessionStorage.getItem('audioMuted');
     if (storedMuteStatus) {
       setIsMuted(JSON.parse(storedMuteStatus));
     }
-  }, []);
 
-  const handlePlay = async () => {
     const audio = audioRef.current;
-    if (audio) {
-      try {
-        await audio.play();
-        setIsAudioLoaded(true); // Marca que a música foi carregada
-      } catch (error) {
-        console.error('Erro ao reproduzir o áudio:', error);
-      }
-    }
-  };
 
+    if (audio && !hasPlayed) {
+      audio.volume = 0.15; // Definir volume inicial em 15%
+      
+      // Tenta tocar a música assim que o componente for montado
+      const playAudio = async () => {
+        try {
+          // Tentativa de reprodução, após a interação do usuário
+          await audio.play();
+          setHasPlayed(true); // Marca que a música tocou
+        } catch (error) {
+          console.error('Erro ao reproduzir o áudio:', error);
+        }
+      };
+
+      playAudio();
+    }
+  }, [hasPlayed]);
+
+  // Função para alternar o estado de mudo
   const toggleMute = () => {
     const audio = audioRef.current;
     if (audio) {
-      audio.muted = !audio.muted;
+      audio.muted = !audio.muted; // Alterna o estado de mudo
       setIsMuted(audio.muted);
-      localStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir estado do áudio
+      sessionStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir mute
     }
   };
-
-  // O áudio só começa a tocar após o primeiro clique
-  useEffect(() => {
-    if (!isAudioLoaded) {
-      handlePlay(); // Iniciar o áudio ao carregar o componente
-    }
-  }, [isAudioLoaded]);
 
   return (
     <>
@@ -48,11 +49,10 @@ const BackgroundMusic = () => {
         <source src="/background-audio.mp3" type="audio/mpeg" />
         Seu navegador não suporta o elemento de áudio.
       </audio>
+
+      {/* Botão para alternar o mute */}
       <button
-        onClick={() => {
-          handlePlay(); // Garantir que a música comece ao interagir
-          toggleMute();
-        }}
+        onClick={toggleMute}
         className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
       >
         {isMuted ? (
