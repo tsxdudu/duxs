@@ -14,26 +14,30 @@ const BackgroundMusic = () => {
     }
 
     const audio = audioRef.current;
+
     if (audio && !hasPlayed) {
       audio.volume = 0.15; // Definir volume inicial em 15%
-
-      // Garantir que o áudio toque assim que o usuário interagir
+      
+      // Tenta tocar a música assim que o componente for montado
       const playAudio = async () => {
         try {
+          // Tentativa de reprodução, após a interação do usuário
           await audio.play();
-          setHasPlayed(true); // A música tocou, então marca como "já tocada"
+          setHasPlayed(true); // Marca que a música tocou
         } catch (error) {
           console.error('Erro ao reproduzir o áudio:', error);
         }
       };
+
       playAudio();
     }
   }, [hasPlayed]);
 
+  // Função para alternar o estado de mudo
   const toggleMute = () => {
     const audio = audioRef.current;
     if (audio) {
-      audio.muted = !audio.muted;
+      audio.muted = !audio.muted; // Alterna o estado de mudo
       setIsMuted(audio.muted);
       sessionStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir mute
     }
@@ -45,10 +49,10 @@ const BackgroundMusic = () => {
         <source src="/background-audio.mp3" type="audio/mpeg" />
         Seu navegador não suporta o elemento de áudio.
       </audio>
+
+      {/* Botão para alternar o mute */}
       <button
-        onClick={() => {
-          toggleMute();
-        }}
+        onClick={toggleMute}
         className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
       >
         {isMuted ? (
