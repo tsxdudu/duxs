@@ -54,7 +54,7 @@ const Profile = () => {
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
           <SocialLink href="https://instagram.com/tsx.duxs" className="!px-3">
-            <img src="/Instagram.png" alt="Instagram" className="w-5 h-5" />
+            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
           </SocialLink>
           <SocialLink href="https://tiktok.com/@tsx.duxs" className="!px-3">
             <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
