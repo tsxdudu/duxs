@@ -9,42 +9,20 @@ const Profile = () => {
 
   useEffect(() => {
     try {
-      // Get the current timestamp
-      const now = new Date().getTime();
-      
-      // Check if this user has viewed the profile before
-      const lastVisit = localStorage.getItem('lastProfileVisit');
       const storedViews = localStorage.getItem('profileViews');
-      const viewsCount = storedViews ? parseInt(storedViews) : 0;
-      
-      console.log('Last visit:', lastVisit);
-      console.log('Current views:', viewsCount);
-      
-      // If no visit recorded or last visit was more than 1 hour ago
-      if (!lastVisit || (now - parseInt(lastVisit)) > 3600000) {
-        // Update the view count
-        const newCount = viewsCount + 1;
-        console.log('Incrementing views to:', newCount);
-        
-        localStorage.setItem('profileViews', newCount.toString());
-        localStorage.setItem('lastProfileVisit', now.toString());
-        setViewCount(newCount);
-      } else {
-        // Just display the current count without incrementing
-        console.log('Using existing view count:', viewsCount);
-        setViewCount(viewsCount);
-      }
+      // If no views stored, start with 5688
+      const viewsCount = storedViews ? parseInt(storedViews) : 5688;
+      setViewCount(viewsCount);
     } catch (error) {
       console.error('Error updating view count:', error);
-      // If there's an error, at least show 1 view
-      setViewCount(1);
+      setViewCount(5688);
     }
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative overflow-hidden bg-gradient-to-br from-[#1A1F2C] via-[#6E59A5] to-[#9b87f5]">
+      <BackgroundMusic />
       <Particles />
-      <BackgroundMusic url="/your-background-music.mp3" />
       
       {/* Profile Image */}
       <div className="relative flex flex-col items-center z-10">

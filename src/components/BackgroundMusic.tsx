@@ -1,41 +1,43 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
 
-interface BackgroundMusicProps {}
-
-const BackgroundMusic = ({}: BackgroundMusicProps) => {
+const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
-
-    const handleInteraction = () => {
-      if (audio) {
-        audio.volume = 0.3; // Ajusta o volume inicial
-        audio
-          .play()
-          .then(() => {
-            console.log('Áudio reproduzido com sucesso.');
-          })
-          .catch((error) => {
-            console.error('Erro ao reproduzir o áudio de fundo:', error);
-          });
-      }
-    };
-
-    // Adiciona o evento de interação para garantir que o áudio seja reproduzido
-    document.addEventListener('click', handleInteraction);
-
-    // Remove o evento ao desmontar o componente
-    return () => {
-      document.removeEventListener('click', handleInteraction);
-    };
+    if (audio) {
+      audio.volume = 0.3;
+      audio.play().catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+    }
   }, []);
 
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
-    <audio ref={audioRef} loop>
-      <source src="/src/background-audio.mp3" type="audio/mpeg" />
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
+    <>
+      <audio ref={audioRef} loop>
+        <source src="/src/background-audio.mp3" type="audio/mpeg" />
+      </audio>
+      <button
+        onClick={toggleMute}
+        className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
+      >
+        {isMuted ? (
+          <VolumeX className="w-6 h-6 text-white" />
+        ) : (
+          <Volume2 className="w-6 h-6 text-white" />
+        )}
+      </button>
+    </>
   );
 };
 
