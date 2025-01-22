@@ -21,14 +21,14 @@ const Particles = () => {
         fpsLimit: 120,
         particles: {
           color: {
-            value: "#9b87f5",
+            value: "#A78BFA", // Roxo mais claro para as partículas
           },
           links: {
-            color: "#8B5CF6",
+            color: "#8B5CF6", // Roxo para as linhas de conexão
             distance: 150,
             enable: true,
-            opacity: 0.5,
-            width: 1,
+            opacity: 0.6, // Ajuste a opacidade para torná-las um pouco mais visíveis
+            width: 2, // Aumente a largura das linhas para um efeito mais marcado
           },
           move: {
             enable: true,
@@ -36,7 +36,7 @@ const Particles = () => {
               default: "bounce",
             },
             random: false,
-            speed: 2,
+            speed: 3, // Aumente a velocidade das partículas para um movimento mais dinâmico
             straight: false,
           },
           number: {
@@ -44,16 +44,16 @@ const Particles = () => {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 100, // Aumente o número de partículas para mais densidade
           },
           opacity: {
-            value: 0.5,
+            value: 0.7, // Aumente a opacidade para as partículas ficarem mais visíveis
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 2, max: 8 }, // Aumente o tamanho das partículas
           },
         },
         detectRetina: true,
