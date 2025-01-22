@@ -67,16 +67,26 @@ const Profile = () => {
       <div className="flex flex-col items-center gap-4 w-full max-w-md px-4 z-10">
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
-          <SocialLink href="https://instagram.com/tsx.duxs" className="!px-3">
-            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink href="https://tiktok.com/@tsx.duxs" className="!px-3">
-            <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink href="https://discord.gg/vKYK4Zxp" className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40">
-            <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
-          </SocialLink>
-        </div>
+  <SocialLink
+    href="https://instagram.com/tsx.duxs"
+    className="!px-3 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
+  </SocialLink>
+  <SocialLink
+    href="https://tiktok.com/@tsx.duxs"
+    className="!px-3 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
+  </SocialLink>
+  <SocialLink
+    href="https://discord.gg/vKYK4Zxp"
+    className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
+  >
+    <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
+  </SocialLink>
+</div>
+
 
         {/* Spotify */}
         <a
