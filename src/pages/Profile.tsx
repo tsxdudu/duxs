@@ -25,13 +25,20 @@ const Profile = () => {
       <Particles />
 
       <div className="relative flex flex-col items-center z-10">
-        <img
-          src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
-          alt="Profile"
-          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
-          className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
-        />
-      </div>
+  <img
+    src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
+    alt="Profile"
+    onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
+    className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
+  />
+  
+  {/* Estrela e verificado */}
+  <div className="flex items-center mt-2 gap-1 text-white">
+    <span className="text-xl">☆</span>
+    <img src="/verificado.png" alt="Verificado" className="w-5 h-5" />
+  </div>
+</div>
+
 
       {/* Bio */}
       <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
