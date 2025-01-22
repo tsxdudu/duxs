@@ -27,7 +27,6 @@ const Profile = () => {
       <BackgroundMusic />
       <Particles />
 
-      {/* Profile Image */}
       <div className="relative flex flex-col items-center z-10">
         <img
           src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
