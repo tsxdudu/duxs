@@ -8,17 +8,23 @@ const BackgroundMusic = () => {
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.volume = 0.3;
-      audio.play().catch((error) => {
-        console.error('Error playing audio:', error);
-      });
+      audio.volume = 0.3; // Define o volume inicial
+      const playAudio = async () => {
+        try {
+          await audio.play();
+        } catch (error) {
+          console.error('Erro ao reproduzir o áudio:', error);
+        }
+      };
+      playAudio();
     }
   }, []);
 
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !audioRef.current.muted;
-      setIsMuted(!isMuted);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.muted = !audio.muted;
+      setIsMuted(audio.muted);
     }
   };
 
@@ -26,6 +32,7 @@ const BackgroundMusic = () => {
     <>
       <audio ref={audioRef} loop>
         <source src="/background-audio.mp3" type="audio/mpeg" />
+        Seu navegador não suporta o elemento de áudio.
       </audio>
       <button
         onClick={toggleMute}
