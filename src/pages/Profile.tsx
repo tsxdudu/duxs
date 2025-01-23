@@ -39,7 +39,14 @@ const Profile = () => {
         />
         
         <div className="relative flex items-center justify-center mt-2">
-          <span className="text-2xl text-[#8B5CF6] animate-pulse shadow-[0_0_10px_#8B5CF6]">☆</span>
+          <span 
+            className="text-2xl text-[#8B5CF6] animate-pulse"
+            style={{
+              filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)'
+            }}
+          >
+            ☆
+          </span>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
@@ -63,40 +70,38 @@ const Profile = () => {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-4 mb-8 z-10 justify-center">
-  <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-    <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
-    Programador
-  </span>
-  <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-    <img src="/ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
-    Cybersecurity
-  </span>
-</div>
-
+        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
+          <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
+          Programador
+        </span>
+        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
+          <img src="/ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
+          Cybersecurity
+        </span>
+      </div>
 
       <div className="flex flex-col items-center gap-4 w-full max-w-md px-4 z-10">
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
-  <SocialLink
-    href="https://instagram.com/tsx.duxs"
-    className="!px-3 transition-transform transform hover:scale-110 duration-300"
-  >
-    <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
-  </SocialLink>
-  <SocialLink
-    href="https://tiktok.com/@tsx.duxs"
-    className="!px-3 transition-transform transform hover:scale-110 duration-300"
-  >
-    <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
-  </SocialLink>
-  <SocialLink
-    href="https://discord.gg/vKYK4Zxp"
-    className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
-  >
-    <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
-  </SocialLink>
-</div>
-
+          <SocialLink
+            href="https://instagram.com/tsx.duxs"
+            className="!px-3 transition-transform transform hover:scale-110 duration-300"
+          >
+            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
+          </SocialLink>
+          <SocialLink
+            href="https://tiktok.com/@tsx.duxs"
+            className="!px-3 transition-transform transform hover:scale-110 duration-300"
+          >
+            <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
+          </SocialLink>
+          <SocialLink
+            href="https://discord.gg/vKYK4Zxp"
+            className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
+          >
+            <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
+          </SocialLink>
+        </div>
 
         {/* Spotify */}
         <a
