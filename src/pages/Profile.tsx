@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import SocialLink from '@/components/SocialLink';
 import Particles from '@/components/Particles';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Profile = () => {
   const [viewCount, setViewCount] = useState<number>(0);
@@ -25,26 +31,31 @@ const Profile = () => {
       <Particles />
 
       <div className="relative flex flex-col items-center z-10">
-  <img
-    src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
-    alt="Profile"
-    onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
-    className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
-  />
-  
-  {/* Estrela centralizada com verificado ao lado */}
-  <div className="relative flex items-center justify-center mt-2">
-    <span className="text-2xl text-white">☆</span>
-    <img 
-      src="/verificado.png" 
-      alt="Verificado" 
-      className="w-3 h-3 absolute right-[-12px] top-1/2 transform -translate-y-1/2" 
-    />
-  </div>
-</div>
-
-
-
+        <img
+          src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
+          alt="Profile"
+          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
+          className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
+        />
+        
+        <div className="relative flex items-center justify-center mt-2">
+          <span className="text-2xl text-white">☆</span>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <img 
+                  src="/verificado.png" 
+                  alt="Verificado" 
+                  className="w-3 h-3 absolute right-[-12px] top-1/2 transform -translate-y-1/2" 
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Verificado</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+      </div>
 
       {/* Bio */}
       <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">

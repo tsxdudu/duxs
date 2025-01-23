@@ -6,7 +6,6 @@ const BackgroundMusic = () => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [hasPlayed, setHasPlayed] = useState<boolean>(false);
 
-  // Usar sessionStorage para persistir o estado da música apenas durante a sessão
   useEffect(() => {
     const storedMuteStatus = sessionStorage.getItem('audioMuted');
     if (storedMuteStatus) {
@@ -16,14 +15,12 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
 
     if (audio && !hasPlayed) {
-      audio.volume = 0.25;
-      
+      audio.volume = 0.45; // Aumentei o volume de 0.25 para 0.45
       
       const playAudio = async () => {
         try {
-          // Tentativa de reprodução, após a interação do usuário
           await audio.play();
-          setHasPlayed(true); // Marca que a música tocou
+          setHasPlayed(true);
         } catch (error) {
           console.error('Erro ao reproduzir o áudio:', error);
         }
@@ -33,13 +30,12 @@ const BackgroundMusic = () => {
     }
   }, [hasPlayed]);
 
-  // Função para alternar o estado de mudo
   const toggleMute = () => {
     const audio = audioRef.current;
     if (audio) {
-      audio.muted = !audio.muted; // Alterna o estado de mudo
+      audio.muted = !audio.muted;
       setIsMuted(audio.muted);
-      sessionStorage.setItem('audioMuted', JSON.stringify(audio.muted)); // Persistir mute
+      sessionStorage.setItem('audioMuted', JSON.stringify(audio.muted));
     }
   };
 
@@ -50,7 +46,6 @@ const BackgroundMusic = () => {
         Seu navegador não suporta o elemento de áudio.
       </audio>
 
-      {/* Botão para alternar o mute */}
       <button
         onClick={toggleMute}
         className="fixed top-4 right-4 z-50 bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
