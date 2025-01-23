@@ -16,9 +16,9 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
 
     if (audio && !hasPlayed) {
-      audio.volume = 0.15; // Definir volume inicial em 15%
+      audio.volume = 0.25;
       
-      // Tenta tocar a música assim que o componente for montado
+      
       const playAudio = async () => {
         try {
           // Tentativa de reprodução, após a interação do usuário
