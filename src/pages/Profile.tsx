@@ -39,7 +39,7 @@ const Profile = () => {
         />
         
         <div className="relative flex items-center justify-center mt-2">
-          <span className="text-2xl text-white">☆</span>
+          <span className="text-2xl text-[#8B5CF6] animate-pulse shadow-[0_0_10px_#8B5CF6] rounded-full">☆</span>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
@@ -57,7 +57,6 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Bio */}
       <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
         Behind the scenes of cyber darkness, my code is the shadow that strikes fear and respect. 💻
       </p>
