@@ -40,13 +40,14 @@ const Profile = () => {
         
         <div className="relative flex items-center justify-center mt-2">
           <span 
-            className="text-2xl text-[#8B5CF6] animate-pulse"
+           className="text-2xl text-white animate-pulse"
             style={{
-              filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)'
-            }}
-          >
-            ☆
-          </span>
+              filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)',
+               }}
+              >
+             ☆
+           </span>
+
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
