@@ -39,7 +39,7 @@ const Profile = () => {
         />
         
         <div className="relative flex items-center justify-center mt-2">
-          <span className="text-2xl text-[#8B5CF6] animate-pulse shadow-[0_0_10px_#8B5CF6] rounded-full">☆</span>
+          <span className="text-2xl text-[#8B5CF6] animate-pulse shadow-[0_0_10px_#8B5CF6]">☆</span>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
