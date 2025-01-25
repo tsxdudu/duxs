@@ -32,7 +32,7 @@ const Profile = () => {
 
       <div className="relative flex flex-col items-center z-10">
         <img
-          src="/lovable-uploads/570f3fad-7518-4190-847c-56a60e9d483c.png"
+          src="/c96956a039dc9e4c8c956162ce2ce337.jpg"
           alt="Profile"
           onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
           className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
