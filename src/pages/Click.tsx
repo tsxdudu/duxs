@@ -5,15 +5,6 @@ const Click = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // Get current views
-    const storedViews = localStorage.getItem('profileViews');
-    const currentViews = storedViews ? parseInt(storedViews) : 5688; // Start with 5688 if no views yet
-    
-    // Update views
-    localStorage.setItem('profileViews', (currentViews + 1).toString());
-    localStorage.setItem('lastProfileVisit', new Date().getTime().toString());
-    
-    // Navigate to profile
     navigate('/profile');
   };
 
