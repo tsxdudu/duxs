@@ -12,7 +12,8 @@ import {
 import { toast } from "sonner";
 
 const Profile = () => {
-  const [viewCount, setViewCount] = useState<number>(0);
+  const [viewCount, setViewCount] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const updateViewCount = async () => {
@@ -40,9 +41,11 @@ const Profile = () => {
         if (updateError) throw updateError;
 
         setViewCount(newCount);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error updating view count:', error);
         toast.error('Failed to update view count');
+        setIsLoading(false);
       }
     };
 
@@ -168,7 +171,7 @@ const Profile = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
-        <span>{viewCount}</span>
+        <span>{isLoading ? "..." : viewCount}</span>
       </div>
     </div>
   );
