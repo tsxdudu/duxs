@@ -2,27 +2,73 @@ import React, { useEffect, useState } from 'react';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import SocialLink from '@/components/SocialLink';
 import Particles from '@/components/Particles';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { toast } from "sonner";
 
 const Profile = () => {
   const [viewCount, setViewCount] = useState<number>(0);
 
   useEffect(() => {
-    try {
-      const storedViews = localStorage.getItem('profileViews');
-      const viewsCount = storedViews ? parseInt(storedViews) : 5688;
-      const updatedViews = viewsCount + 1;
-      setViewCount(updatedViews);
-      localStorage.setItem('profileViews', updatedViews.toString());
-    } catch (error) {
-      console.error('Erro ao atualizar o contador de visualizações:', error);
-      setViewCount(5688);
-    }
+    const updateViewCount = async () => {
+      try {
+        // First, get the current view count
+        const { data: viewData, error: fetchError } = await supabase
+          .from('profile_views')
+          .select('view_count')
+          .single();
+
+        if (fetchError) throw fetchError;
+
+        const currentCount = viewData?.view_count || 0;
+        const newCount = currentCount + 1;
+
+        // Update the view count
+        const { error: updateError } = await supabase
+          .from('profile_views')
+          .update({ 
+            view_count: newCount,
+            last_updated: new Date().toISOString()
+          })
+          .eq('id', 1);
+
+        if (updateError) throw updateError;
+
+        setViewCount(newCount);
+      } catch (error) {
+        console.error('Error updating view count:', error);
+        toast.error('Failed to update view count');
+      }
+    };
+
+    updateViewCount();
+
+    // Subscribe to realtime changes
+    const channel = supabase
+      .channel('profile_views_changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'profile_views'
+        },
+        (payload: any) => {
+          if (payload.new?.view_count) {
+            setViewCount(payload.new.view_count);
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   return (
@@ -40,13 +86,13 @@ const Profile = () => {
         
         <div className="relative flex items-center justify-center mt-2">
           <span 
-           className="text-2xl text-white animate-pulse"
+            className="text-2xl text-white animate-pulse"
             style={{
               filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)',
-               }}
-              >
-             ☆
-           </span>
+            }}
+          >
+            ☆
+          </span>
 
           <TooltipProvider>
             <Tooltip>
