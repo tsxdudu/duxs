@@ -36,6 +36,7 @@ const App = () => (
           <Route path="/click" element={<Click />} />
           <Route path="/profile" element={<Profile />} />
           {}
+          <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
