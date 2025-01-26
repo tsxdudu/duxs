@@ -9,21 +9,33 @@ import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
-
 const RedirectOnLoad = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     if (isInitialLoad) {
       navigate("/click");
       setIsInitialLoad(false);
     }
   }, [navigate, isInitialLoad]);
 
-  return null; 
+  return null;
 };
+
+const NotFoundPage = () => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      textAlign: "center",
+    }}
+  >
+    <h1 style={{ fontSize: "3rem" }}>thanks for viewing my profile<3 </h1>
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -31,12 +43,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <RedirectOnLoad /> {}
+        <RedirectOnLoad />
         <Routes>
           <Route path="/click" element={<Click />} />
           <Route path="/profile" element={<Profile />} />
-          {}
-          <Route path="*" element={<h1>Página não encontrada</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
