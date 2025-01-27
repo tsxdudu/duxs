@@ -53,10 +53,10 @@ const Particles = () => {
             type: "circle", // Forma das partículas
           },
           size: {
-            value: 8, // Tamanho das partículas ajustado
+            value: 8, // Tamanho inicial das partículas
             animation: {
               enable: true,
-              speed: 1, // Velocidade da animação do tamanho das partículas
+              speed: 3, // Velocidade da animação de aumento/diminuição
               minimumValue: 5, // Valor mínimo de tamanho
             },
           },
