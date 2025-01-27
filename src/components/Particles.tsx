@@ -3,7 +3,7 @@ import { loadFull } from "tsparticles";
 import { Engine } from "tsparticles-engine";
 import ReactParticles from "react-particles";
 
-const Particles = () => {
+const Particles = React.memo(() => {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
@@ -85,6 +85,6 @@ const Particles = () => {
       }}
     />
   );
-};
+});
 
 export default Particles;
