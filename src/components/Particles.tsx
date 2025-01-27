@@ -36,7 +36,7 @@ const Particles = () => {
               default: "bounce",
             },
             random: false,
-            speed: 3, // Aumente a velocidade das partículas para um movimento mais dinâmico
+            speed: 1, // Reduzi a velocidade para tornar o movimento mais lento
             straight: false,
           },
           number: {
