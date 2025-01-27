@@ -28,7 +28,7 @@ const Particles = () => {
           },
           move: {
             enable: true,
-            speed: 2, // Velocidade das partículas aumentada
+            speed: 1.5, // Velocidade das partículas ajustada para 1.5
             direction: "random", // Direção aleatória para um movimento mais fluido
             outModes: {
               default: "out", // Partículas saem de forma consistente
@@ -39,14 +39,14 @@ const Particles = () => {
               enable: true,
               area: 800,
             },
-            value: 200, // Aumenta o número de partículas
+            value: 150, // Número de partículas ajustado para 150
           },
           opacity: {
             value: 0.5, // Opacidade das partículas
             animation: {
               enable: true,
               speed: 0.5, // Velocidade da animação de opacidade mais lenta
-              minimumValue: 0.3, // Valor mínimo de opacidade
+              minimumValue: 0, // As partículas desaparecem completamente
             },
           },
           shape: {
@@ -57,7 +57,7 @@ const Particles = () => {
             animation: {
               enable: true,
               speed: 3, // Velocidade da animação de aumento/diminuição
-              minimumValue: 5, // Valor mínimo de tamanho
+              minimumValue: 0, // As partículas desaparecem quando diminuem
             },
           },
         },
@@ -78,4 +78,3 @@ const Particles = () => {
 };
 
 export default Particles;
-          
