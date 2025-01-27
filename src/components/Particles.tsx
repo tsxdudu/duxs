@@ -28,7 +28,7 @@ const Particles = () => {
           },
           move: {
             enable: true,
-            speed: 0.5, // Velocidade das partículas reduzida
+            speed: 2, // Velocidade das partículas aumentada
             direction: "random", // Direção aleatória para um movimento mais fluido
             outModes: {
               default: "out", // Partículas saem de forma consistente
@@ -39,7 +39,7 @@ const Particles = () => {
               enable: true,
               area: 800,
             },
-            value: 50, // Reduz o número de partículas para dar um efeito mais suave
+            value: 200, // Aumenta o número de partículas
           },
           opacity: {
             value: 0.5, // Opacidade das partículas
@@ -78,3 +78,4 @@ const Particles = () => {
 };
 
 export default Particles;
+          
