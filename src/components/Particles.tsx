@@ -18,10 +18,10 @@ const Particles = () => {
             value: "transparent", // Fundo transparente
           },
         },
-        fpsLimit: 120,
+        fpsLimit: 60, // Diminuir o limite de FPS para suavizar os movimentos
         particles: {
           number: {
-            value: 400, // Número de partículas
+            value: 100, // Menos partículas (reduzir a quantidade)
             density: {
               enable: true,
               area: 800,
@@ -38,17 +38,17 @@ const Particles = () => {
             random: true,
             anim: {
               enable: true, // Habilitar animação de opacidade
-              speed: 1, // Velocidade da animação
+              speed: 0.5, // Velocidade da animação de opacidade (mais lenta)
               opacity_min: 0.1, // Opacidade mínima das partículas
               sync: false,
             },
           },
           size: {
-            value: 10, // Tamanho das partículas
+            value: 8, // Tamanho das partículas (menor)
             random: true,
             anim: {
               enable: true, // Habilitar animação de tamanho
-              speed: 40, // Velocidade da animação do tamanho
+              speed: 10, // Velocidade da animação de tamanho (mais lenta)
               size_min: 0.1, // Tamanho mínimo das partículas
               sync: false,
             },
@@ -58,7 +58,7 @@ const Particles = () => {
           },
           move: {
             enable: true,
-            speed: 1, // Velocidade das partículas
+            speed: 0.5, // Velocidade das partículas (mais lenta)
             direction: "bottom", // Movimento para baixo
             random: false,
             straight: false,
