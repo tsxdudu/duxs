@@ -21,7 +21,7 @@ const Particles = () => {
         fpsLimit: 60, // Diminuir o limite de FPS para suavizar os movimentos
         particles: {
           number: {
-            value: 100, // Menos partículas (reduzir a quantidade)
+            value: 150, // Aumentar um pouco o número de partículas
             density: {
               enable: true,
               area: 800,
