@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { loadFull } from "tsparticles";
 import { Engine } from "tsparticles-engine";
 import ReactParticles from "react-particles";
@@ -15,73 +15,53 @@ const Particles = () => {
       options={{
         background: {
           color: {
-            value: "transparent", // Fundo transparente
+            value: "transparent",
           },
         },
-        fpsLimit: 60, // Diminuir o limite de FPS para suavizar os movimentos
+        fpsLimit: 60, // Menor FPS para reduzir o desempenho e diminuir a velocidade das partículas
         particles: {
+          color: {
+            value: "#ffffff", // Partículas brancas
+          },
+          links: {
+            enable: false, // Desabilita as linhas de conexão
+          },
+          move: {
+            enable: true,
+            speed: 1, // Velocidade das partículas reduzida
+            direction: "random", // Direção aleatória para um movimento mais fluido
+            outModes: {
+              default: "out", // Partículas saem de forma consistente
+            },
+          },
           number: {
-            value: 150, // Aumentar um pouco o número de partículas
             density: {
               enable: true,
               area: 800,
             },
+            value: 100, // Aumenta o número de partículas
           },
-          color: {
-            value: "#ffffff", // Cor das partículas (brancas)
+          opacity: {
+            value: 0.5, // Opacidade das partículas
           },
           shape: {
             type: "circle", // Forma das partículas
           },
-          opacity: {
-            value: 0.5, // Opacidade das partículas
-            random: true,
-            anim: {
-              enable: true, // Habilitar animação de opacidade
-              speed: 0.5, // Velocidade da animação de opacidade (mais lenta)
-              opacity_min: 0.1, // Opacidade mínima das partículas
-              sync: false,
-            },
-          },
           size: {
-            value: 8, // Tamanho das partículas (menor)
-            random: true,
-            anim: {
-              enable: true, // Habilitar animação de tamanho
-              speed: 10, // Velocidade da animação de tamanho (mais lenta)
-              size_min: 0.1, // Tamanho mínimo das partículas
-              sync: false,
-            },
-          },
-          line_linked: {
-            enable: false, // Desabilitar as linhas de conexão
-          },
-          move: {
-            enable: true,
-            speed: 0.5, // Velocidade das partículas (mais lenta)
-            direction: "bottom", // Movimento para baixo
-            random: false,
-            straight: false,
-            out_mode: "out", // As partículas saem da tela
-            bounce: false,
-            attract: {
-              enable: false, // Desabilitar atração
-            },
+            value: { min: 3, max: 6 }, // Tamanho das partículas
           },
         },
+        detectRetina: true,
         interactivity: {
-          detect_on: "canvas", // Detectar interações apenas no canvas
           events: {
             onhover: {
-              enable: false, // Desabilitar interação no hover
+              enable: false, // Desabilita a interação ao passar o mouse
             },
             onclick: {
-              enable: false, // Desabilitar interação no clique
+              enable: false, // Desabilita a interação ao clicar
             },
-            resize: true, // Manter ajuste de tela
           },
         },
-        retina_detect: true,
       }}
     />
   );
