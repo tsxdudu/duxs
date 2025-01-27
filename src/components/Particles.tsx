@@ -15,7 +15,7 @@ const Particles = () => {
       options={{
         background: {
           color: {
-            value: "transparent", // Garantir que o fundo é transparente
+            value: "transparent", // Fundo transparente
           },
         },
         fpsLimit: 120,
@@ -37,9 +37,9 @@ const Particles = () => {
             value: 0.5, // Opacidade das partículas
             random: true,
             anim: {
-              enable: false,
-              speed: 1,
-              opacity_min: 0.1,
+              enable: true, // Habilitar animação de opacidade
+              speed: 1, // Velocidade da animação
+              opacity_min: 0.1, // Opacidade mínima das partículas
               sync: false,
             },
           },
@@ -47,31 +47,25 @@ const Particles = () => {
             value: 10, // Tamanho das partículas
             random: true,
             anim: {
-              enable: false,
-              speed: 40,
-              size_min: 0.1,
+              enable: true, // Habilitar animação de tamanho
+              speed: 40, // Velocidade da animação do tamanho
+              size_min: 0.1, // Tamanho mínimo das partículas
               sync: false,
             },
           },
           line_linked: {
             enable: false, // Desabilitar as linhas de conexão
-            distance: 500,
-            color: "#ffffff", // Cor das linhas (brancas)
-            opacity: 0.4,
-            width: 2,
           },
           move: {
             enable: true,
-            speed: 1, // Diminui a velocidade das partículas
-            direction: "bottom",
+            speed: 1, // Velocidade das partículas
+            direction: "bottom", // Movimento para baixo
             random: false,
             straight: false,
             out_mode: "out", // As partículas saem da tela
             bounce: false,
             attract: {
-              enable: false,
-              rotateX: 600,
-              rotateY: 1200,
+              enable: false, // Desabilitar atração
             },
           },
         },
