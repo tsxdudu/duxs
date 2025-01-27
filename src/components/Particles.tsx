@@ -79,39 +79,12 @@ const Particles = () => {
           detect_on: "canvas", // Detectar interações apenas no canvas
           events: {
             onhover: {
-              enable: true,
-              mode: "bubble",
+              enable: false, // Desabilitar interação no hover
             },
             onclick: {
-              enable: true,
-              mode: "repulse",
+              enable: false, // Desabilitar interação no clique
             },
-            resize: true,
-          },
-          modes: {
-            grab: {
-              distance: 400,
-              line_linked: {
-                opacity: 0.5,
-              },
-            },
-            bubble: {
-              distance: 400,
-              size: 4,
-              duration: 0.3,
-              opacity: 1,
-              speed: 3,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-            push: {
-              particles_nb: 4,
-            },
-            remove: {
-              particles_nb: 2,
-            },
+            resize: true, // Manter ajuste de tela
           },
         },
         retina_detect: true,
