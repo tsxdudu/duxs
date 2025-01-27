@@ -15,7 +15,7 @@ const Particles = () => {
       options={{
         background: {
           color: {
-            value: "transparent",
+            value: "transparent", // Remover qualquer interação com o fundo
           },
         },
         fpsLimit: 120,
@@ -28,7 +28,7 @@ const Particles = () => {
             },
           },
           color: {
-            value: "#fff", // Cor das partículas
+            value: "#ffffff", // Cor das partículas (brancas)
           },
           shape: {
             type: "circle", // Forma das partículas
@@ -40,7 +40,7 @@ const Particles = () => {
               nb_sides: 5,
             },
             image: {
-              src: "img/github.svg", // Caso queira uma imagem
+              src: "img/github.svg", // Caso queira uma imagem, pode ser removido se não usar
               width: 100,
               height: 100,
             },
