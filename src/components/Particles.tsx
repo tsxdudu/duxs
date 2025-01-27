@@ -15,43 +15,48 @@ const Particles = () => {
       options={{
         background: {
           color: {
-            value: "transparent",
+            value: "transparent", // Fundo transparente
           },
         },
-        fpsLimit: 60, // Menor FPS para reduzir o desempenho e diminuir a velocidade das partículas
+        fpsLimit: 60, // Limite de FPS para um desempenho estável
         particles: {
           color: {
-            value: "#ffffff", // Partículas brancas
+            value: "#ffffff", // Cor branca para as partículas
           },
           links: {
-            enable: false, // Desabilita as linhas de conexão
+            enable: true, // Habilitar linhas de conexão
+            color: "#ffffff", // Cor das linhas
+            distance: 150, // Distância de conexão entre partículas
+            opacity: 0.5, // Opacidade das linhas de conexão
+            width: 1, // Largura das linhas de conexão
           },
           move: {
             enable: true,
-            speed: 1, // Velocidade das partículas reduzida
-            direction: "random", // Direção aleatória para um movimento mais fluido
+            speed: 1, // Velocidade das partículas
+            direction: "random", // Movimento aleatório das partículas
             outModes: {
-              default: "out", // Partículas saem de forma consistente
+              default: "out", // Quando a partícula sai, ela desaparece
             },
+            random: true, // Movimentos aleatórios das partículas
+            straight: false, // Não se movem em linha reta
           },
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 800, // Densidade das partículas na área
             },
-            value: 100, // Aumenta o número de partículas
+            value: 150, // Número de partículas
           },
           opacity: {
             value: 0.5, // Opacidade das partículas
           },
           shape: {
-            type: "circle", // Forma das partículas
+            type: "circle", // Forma circular das partículas
           },
           size: {
             value: { min: 3, max: 6 }, // Tamanho das partículas
           },
         },
-        detectRetina: true,
         interactivity: {
           events: {
             onhover: {
@@ -62,6 +67,7 @@ const Particles = () => {
             },
           },
         },
+        detectRetina: true, // Detecta retina para melhor visualização em telas de alta definição
       }}
     />
   );
