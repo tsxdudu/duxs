@@ -15,7 +15,7 @@ const Particles = () => {
       options={{
         background: {
           color: {
-            value: "transparent", // Remover qualquer interação com o fundo
+            value: "transparent", // Garantir que o fundo é transparente
           },
         },
         fpsLimit: 120,
@@ -32,18 +32,6 @@ const Particles = () => {
           },
           shape: {
             type: "circle", // Forma das partículas
-            stroke: {
-              width: 0,
-              color: "#000000",
-            },
-            polygon: {
-              nb_sides: 5,
-            },
-            image: {
-              src: "img/github.svg", // Caso queira uma imagem, pode ser removido se não usar
-              width: 100,
-              height: 100,
-            },
           },
           opacity: {
             value: 0.5, // Opacidade das partículas
@@ -68,17 +56,17 @@ const Particles = () => {
           line_linked: {
             enable: false, // Desabilitar as linhas de conexão
             distance: 500,
-            color: "#ffffff",
+            color: "#ffffff", // Cor das linhas (brancas)
             opacity: 0.4,
             width: 2,
           },
           move: {
             enable: true,
-            speed: 1, // Diminui a velocidade para movimento mais lento
+            speed: 1, // Diminui a velocidade das partículas
             direction: "bottom",
             random: false,
             straight: false,
-            out_mode: "out",
+            out_mode: "out", // As partículas saem da tela
             bounce: false,
             attract: {
               enable: false,
@@ -88,7 +76,7 @@ const Particles = () => {
           },
         },
         interactivity: {
-          detect_on: "canvas",
+          detect_on: "canvas", // Detectar interações apenas no canvas
           events: {
             onhover: {
               enable: true,
