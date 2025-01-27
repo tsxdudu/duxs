@@ -20,43 +20,113 @@ const Particles = () => {
         },
         fpsLimit: 120,
         particles: {
-          color: {
-            value: "#A78BFA", // Roxo mais claro para as partículas
-          },
-          links: {
-            color: "#8B5CF6", // Roxo para as linhas de conexão
-            distance: 150,
-            enable: true,
-            opacity: 0.6, // Ajuste a opacidade para torná-las um pouco mais visíveis
-            width: 2, // Aumente a largura das linhas para um efeito mais marcado
-          },
-          move: {
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 1, // Reduzi a velocidade para tornar o movimento mais lento
-            straight: false,
-          },
           number: {
+            value: 400, // Número de partículas
             density: {
               enable: true,
               area: 800,
             },
-            value: 100, // Aumente o número de partículas para mais densidade
           },
-          opacity: {
-            value: 0.7, // Aumente a opacidade para as partículas ficarem mais visíveis
+          color: {
+            value: "#fff", // Cor das partículas
           },
           shape: {
-            type: "circle",
+            type: "circle", // Forma das partículas
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+            image: {
+              src: "img/github.svg", // Caso queira uma imagem
+              width: 100,
+              height: 100,
+            },
+          },
+          opacity: {
+            value: 0.5, // Opacidade das partículas
+            random: true,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
           },
           size: {
-            value: { min: 2, max: 8 }, // Aumente o tamanho das partículas
+            value: 10, // Tamanho das partículas
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: false, // Desabilitar as linhas de conexão
+            distance: 500,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 2,
+          },
+          move: {
+            enable: true,
+            speed: 1, // Diminui a velocidade para movimento mais lento
+            direction: "bottom",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
           },
         },
-        detectRetina: true,
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "bubble",
+            },
+            onclick: {
+              enable: true,
+              mode: "repulse",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 0.5,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 4,
+              duration: 0.3,
+              opacity: 1,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: true,
       }}
     />
   );
