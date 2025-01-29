@@ -27,30 +27,44 @@ const Profile = () => {
   useEffect(() => {
     const updateViewCount = async () => {
       try {
-        // First, get the current view count for ID 1
+        // First, get the current view count
         const { data: viewData, error: fetchError } = await supabase
           .from('profile_views')
           .select('view_count')
-          .eq('id', 1)
+          .limit(1)
           .maybeSingle();
 
         if (fetchError) throw fetchError;
 
-        const currentCount = viewData?.view_count || 0;
-        const newCount = currentCount + 1;
+        if (!viewData) {
+          // If no data exists, create initial record
+          const { error: insertError } = await supabase
+            .from('profile_views')
+            .insert([{ view_count: 1 }]);
+          
+          if (insertError) throw insertError;
+          setViewCount(1);
+        } else {
+          const currentCount = viewData.view_count || 0;
+          const newCount = currentCount + 1;
 
-        // Update the view count
-        const { error: updateError } = await supabase
-          .from('profile_views')
-          .update({ 
-            view_count: newCount,
-            last_updated: new Date().toISOString()
-          })
-          .eq('id', 1);
+          // Update the view count
+          const { error: updateError } = await supabase
+            .from('profile_views')
+            .update({ 
+              view_count: newCount,
+              last_updated: new Date().toISOString()
+            })
+            .eq('view_count', currentCount); // Optimistic concurrency control
 
-        if (updateError) throw updateError;
-
-        setViewCount(newCount);
+          if (updateError) {
+            // If update fails, just show current count without incrementing
+            setViewCount(currentCount);
+          } else {
+            setViewCount(newCount);
+          }
+        }
+        
         setIsLoading(false);
       } catch (error) {
         console.error('Error updating view count:', error);
