@@ -17,7 +17,7 @@ const formatViewCount = (count: number): string => {
   } else if (count >= 1000) {
     return `${Math.floor(count / 1000)}k`;
   }
-  return count.toString();
+  return count === 1 ? "1 visualização" : `${count} visualizações`;
 };
 
 const Profile = () => {
