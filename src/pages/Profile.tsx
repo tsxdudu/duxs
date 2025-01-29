@@ -13,9 +13,9 @@ import { toast } from "sonner";
 
 const formatViewCount = (count: number): string => {
   if (count >= 1000000) {
-    return `${(count / 1000000).toFixed(1)}M`;
+    return `${Math.floor(count / 1000000)}M`;
   } else if (count >= 1000) {
-    return `${(count / 1000).toFixed(1)}k`;
+    return `${Math.floor(count / 1000)}k`;
   }
   return count.toString();
 };
