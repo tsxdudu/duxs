@@ -18,11 +18,12 @@ const Profile = () => {
   useEffect(() => {
     const updateViewCount = async () => {
       try {
-        // First, get the current view count
+        // First, get the current view count for ID 1
         const { data: viewData, error: fetchError } = await supabase
           .from('profile_views')
           .select('view_count')
-          .single();
+          .eq('id', 1)
+          .maybeSingle();
 
         if (fetchError) throw fetchError;
 
