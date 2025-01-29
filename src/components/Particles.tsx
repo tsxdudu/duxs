@@ -18,20 +18,20 @@ const Particles = () => {
             value: "transparent",
           },
         },
-        fpsLimit: 60, // Menor FPS para reduzir o desempenho e diminuir a velocidade das partículas
+        fpsLimit: 60,
         particles: {
           color: {
-            value: "#ffffff", // Partículas brancas
+            value: "#ffffff",
           },
           links: {
-            enable: false, // Desabilita as linhas de conexão
+            enable: false,
           },
           move: {
             enable: true,
-            speed: 1.5, // Velocidade das partículas ajustada para 1.5
-            direction: "random", // Direção aleatória para um movimento mais fluido
+            speed: 1.5,
+            direction: "none",
             outModes: {
-              default: "out", // Partículas saem de forma consistente
+              default: "out",
             },
           },
           number: {
@@ -39,25 +39,25 @@ const Particles = () => {
               enable: true,
               area: 800,
             },
-            value: 150, // Número de partículas ajustado para 150
+            value: 150,
           },
           opacity: {
-            value: 0.5, // Opacidade das partículas
+            value: 0.5,
             animation: {
               enable: true,
-              speed: 0.5, // Velocidade da animação de opacidade mais lenta
-              minimumValue: 0, // As partículas desaparecem completamente
+              speed: 0.5,
+              minimumValue: 0,
             },
           },
           shape: {
-            type: "circle", // Forma das partículas
+            type: "circle",
           },
           size: {
-            value: 8, // Tamanho inicial das partículas
+            value: 8,
             animation: {
               enable: true,
-              speed: 3, // Velocidade da animação de aumento/diminuição
-              minimumValue: 0, // As partículas desaparecem quando diminuem
+              speed: 3,
+              minimumValue: 0,
             },
           },
         },
@@ -65,10 +65,10 @@ const Particles = () => {
         interactivity: {
           events: {
             onhover: {
-              enable: false, // Desabilita a interação ao passar o mouse
+              enable: false,
             },
             onclick: {
-              enable: false, // Desabilita a interação ao clicar
+              enable: false,
             },
           },
         },
