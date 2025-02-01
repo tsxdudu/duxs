@@ -131,7 +131,7 @@ const Profile = () => {
                 />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Verificado</p>
+                <p>Verificadoo</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
