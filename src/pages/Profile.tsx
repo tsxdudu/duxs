@@ -31,44 +31,23 @@ const Profile = () => {
         const { data: viewData, error: fetchError } = await supabase
           .from('profile_views')
           .select('view_count')
+          .order('last_updated', { ascending: false })
           .limit(1)
           .maybeSingle();
 
         if (fetchError) throw fetchError;
 
         if (!viewData) {
-          // If no data exists, create initial record
-          const { error: insertError } = await supabase
-            .from('profile_views')
-            .insert([{ view_count: 1 }]);
-          
-          if (insertError) throw insertError;
-          setViewCount(1);
-        } else {
-          const currentCount = viewData.view_count || 0;
-          const newCount = currentCount + 1;
-
-          // Update the view count
-          const { error: updateError } = await supabase
-            .from('profile_views')
-            .update({ 
-              view_count: newCount,
-              last_updated: new Date().toISOString()
-            })
-            .eq('view_count', currentCount); // Optimistic concurrency control
-
-          if (updateError) {
-            // If update fails, just show current count without incrementing
-            setViewCount(currentCount);
-          } else {
-            setViewCount(newCount);
-          }
+          toast.error('Error loading view count');
+          setIsLoading(false);
+          return;
         }
-        
+
+        setViewCount(viewData.view_count);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error updating view count:', error);
-        toast.error('Failed to update view count');
+        console.error('Error fetching view count:', error);
+        toast.error('Failed to load view count');
         setIsLoading(false);
       }
     };
