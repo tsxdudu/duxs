@@ -30,6 +30,8 @@ const Profile = () => {
         const { data: viewData, error: fetchError } = await supabase
           .from('profile_views')
           .select('view_count')
+          .order('last_updated', { ascending: false })
+          .limit(1)
           .single();
 
         if (fetchError) {
