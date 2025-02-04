@@ -25,20 +25,16 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const updateViewCount = async () => {
+    const fetchViewCount = async () => {
       try {
-        // First, get the current view count
         const { data: viewData, error: fetchError } = await supabase
           .from('profile_views')
           .select('view_count')
-          .order('last_updated', { ascending: false })
-          .limit(1)
-          .maybeSingle();
+          .single();
 
-        if (fetchError) throw fetchError;
-
-        if (!viewData) {
-          toast.error('Error loading view count');
+        if (fetchError) {
+          console.error('Error fetching view count:', fetchError);
+          toast.error('Failed to load view count');
           setIsLoading(false);
           return;
         }
@@ -46,13 +42,13 @@ const Profile = () => {
         setViewCount(viewData.view_count);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching view count:', error);
+        console.error('Error:', error);
         toast.error('Failed to load view count');
         setIsLoading(false);
       }
     };
 
-    updateViewCount();
+    fetchViewCount();
 
     // Subscribe to realtime changes
     const channel = supabase
@@ -76,6 +72,8 @@ const Profile = () => {
       supabase.removeChannel(channel);
     };
   }, []);
+
+  // ... keep existing code (JSX for the profile component)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
