@@ -13,7 +13,7 @@ import ViewCounter from '@/components/profile/ViewCounter';
 const Profile = () => {
   const [viewCount, setViewCount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('profile');
+  const [showAnimes, setShowAnimes] = useState(false);
 
   useEffect(() => {
     const fetchViewCount = async () => {
@@ -66,6 +66,10 @@ const Profile = () => {
     };
   }, []);
 
+  const toggleAnimes = () => {
+    setShowAnimes(!showAnimes);
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
       <BackgroundMusic />
@@ -89,7 +93,7 @@ const Profile = () => {
           </a>
 
           <button
-            onClick={() => setActiveTab('animes')}
+            onClick={toggleAnimes}
             className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#8B5CF6]/20 hover:bg-[#8B5CF6]/40 w-full justify-center transition-all duration-300"
           >
             <span className="text-[#D6BCFA] text-base font-medium">Animes</span>
@@ -98,7 +102,7 @@ const Profile = () => {
 
         <ViewCounter viewCount={viewCount} isLoading={isLoading} />
 
-        {activeTab === 'animes' && (
+        {showAnimes && (
           <div className="mt-8">
             <AnimeGrid />
           </div>
