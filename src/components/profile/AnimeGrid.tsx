@@ -4,7 +4,7 @@ import React from 'react';
 const animes = [
   {
     title: "Tokyo Ghoul",
-    image: "https://images.unsplash.com/photo-1580477667929-3ef27c684b7a?auto=format&fit=crop&w=500",
+    image: "https://m.media-amazon.com/images/M/MV5BNmJkZjUyYjItNjM1MC00YTU1LTgwNjMtMDA4YjdlYzc4MWQzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     description: "Um estudante universitário se transforma em um ghoul após um encontro fatídico."
   },
   {
