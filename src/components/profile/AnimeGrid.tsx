@@ -29,7 +29,7 @@ const animes = [
   },
   {
     title: "86: Eighty-Six",
-    image: "https://static.wikia.nocookie.net/dublagem/images/5/50/86_Eighty_Six.jpg/revision/latest?cb=20210527041709&path-prefix=pt-br",
+    image: "https://fr.web.img6.acsta.net/pictures/21/04/06/18/19/5235708.jpg",
     description: "A história de discriminação e guerra entre humanos e os 86."
   },
   {
@@ -54,7 +54,7 @@ const animes = [
   },
   {
     title: "Bunny Girl Senpai",
-    image: "https://static.wikia.nocookie.net/fandubpediabrasil/images/4/40/Bunny_Girl.jpg/revision/latest?cb=20211129191117&path-prefix=pt-br",
+    image: "https://www.geek-germany.de/wp-content/uploads/2020/09/Rascal-does-not-dream-of-Bunny-Girl-Senpai.jpg",
     description: "Sakuta ajuda garotas afetadas pela Síndrome da Adolescência."
   }
 ];
