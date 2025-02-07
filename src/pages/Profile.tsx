@@ -94,9 +94,9 @@ const Profile = () => {
 
           <button
             onClick={toggleAnimes}
-            className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#8B5CF6]/20 hover:bg-[#8B5CF6]/40 w-full justify-center transition-all duration-300"
+            className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#8B5CF6]/20 hover:bg-[#8B5CF6]/40"
           >
-            <span className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40">Animes</span>
+            <span className="text-white text-base font-medium">Animes</span>
           </button>
         </div>
 
