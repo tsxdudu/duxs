@@ -96,6 +96,7 @@ const Profile = () => {
             onClick={toggleAnimes}
             className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#8B5CF6]/20 hover:bg-[#8B5CF6]/40"
           >
+            <img src="/rosa.png" alt="Spotify" className="w-7 h-7" />
             <span className="text-white text-base font-medium">Animes</span>
           </button>
         </div>
