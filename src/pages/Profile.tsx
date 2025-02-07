@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import SocialLink from '@/components/SocialLink';
@@ -83,6 +82,7 @@ const animes = [
 const Profile = () => {
   const [viewCount, setViewCount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('profile');
 
   useEffect(() => {
     const fetchViewCount = async () => {
@@ -140,7 +140,7 @@ const Profile = () => {
       <BackgroundMusic />
       <Particles />
 
-      <Tabs defaultValue="profile" className="w-full max-w-4xl px-4 z-10">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-4xl px-4 z-10">
         <TabsList className="grid w-full grid-cols-2 mb-8">
           <TabsTrigger value="profile">Perfil</TabsTrigger>
           <TabsTrigger value="animes">Animes</TabsTrigger>
@@ -185,7 +185,6 @@ const Profile = () => {
               Behind the scenes of cyber darkness, my code is the shadow that strikes fear and respect. 💻
             </p>
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-4 mb-8 justify-center">
               <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
                 <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
@@ -198,7 +197,6 @@ const Profile = () => {
             </div>
 
             <div className="flex flex-col items-center gap-4 w-full max-w-md px-4">
-              {/* Redes sociais */}
               <div className="flex gap-4 justify-center">
                 <SocialLink
                   href="https://instagram.com/tsx.duxs"
@@ -220,19 +218,24 @@ const Profile = () => {
                 </SocialLink>
               </div>
 
-              {/* Spotify */}
               <a
                 href="https://open.spotify.com/user/31jau7m672eiyksjzvall2knoh3m?si=JqY6YUoZT-u0K-hdb1cpAg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40"
+                className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40 w-full justify-center"
               >
                 <img src="/spotify.png" alt="Spotify" className="w-7 h-7" />
                 <span className="text-white text-base font-medium">Spotify</span>
               </a>
+
+              <button
+                onClick={() => setActiveTab('animes')}
+                className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#8B5CF6]/20 hover:bg-[#8B5CF6]/40 w-full justify-center transition-all duration-300"
+              >
+                <span className="text-[#D6BCFA] text-base font-medium">Animes</span>
+              </button>
             </div>
 
-            {/* View Counter */}
             <div className="mt-12 flex items-center gap-2 text-white/60">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -244,22 +247,22 @@ const Profile = () => {
         </TabsContent>
 
         <TabsContent value="animes" className="focus:outline-none">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {animes.map((anime) => (
               <div 
                 key={anime.title}
-                className="group relative overflow-hidden rounded-lg bg-black/50 border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="group relative overflow-hidden rounded-lg bg-[#1A1F2C] border border-[#6E59A5]/20 hover:border-[#6E59A5]/40 transition-all duration-300"
               >
-                <div className="aspect-[16/9] overflow-hidden">
+                <div className="aspect-video overflow-hidden">
                   <img
                     src={anime.image}
                     alt={anime.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-white mb-2">{anime.title}</h3>
-                  <p className="text-sm text-gray-400">{anime.description}</p>
+                <div className="p-3">
+                  <h3 className="text-sm font-semibold text-[#9b87f5] mb-1 line-clamp-1">{anime.title}</h3>
+                  <p className="text-xs text-[#7E69AB] line-clamp-2">{anime.description}</p>
                 </div>
               </div>
             ))}
