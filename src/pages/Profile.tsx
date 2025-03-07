@@ -149,7 +149,7 @@ const Profile = () => {
             <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
           </SocialLink>
           <SocialLink
-            href="https://discord.gg/vKYK4Zxp"
+            href="https://discord.gg/yf8QdyBR"
             className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
           >
             <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
