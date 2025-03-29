@@ -137,7 +137,7 @@ const Profile = () => {
         {/* Redes sociais */}
         <div className="flex gap-4 justify-center">
           <SocialLink
-            href="https://instagram.com/tsx.duxs"
+            href="https://instagram.com/xo.duds"
             className="!px-3 transition-transform transform hover:scale-110 duration-300"
           >
             <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
