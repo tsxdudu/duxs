@@ -84,7 +84,7 @@ const Profile = () => {
 
       <div className="relative flex flex-col items-center z-10">
         <img
-          src="/491e98a2c3e81f3efb34db8f9e4c62a8.gif"
+          src="/491e98a2c3e81f3efb34db8f9e4c62a8.jpg"
           alt="Profile"
           onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
           className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
