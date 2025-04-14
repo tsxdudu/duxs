@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BackgroundMusic from '@/components/BackgroundMusic';
-import SocialLink from '@/components/SocialLink';
-import Particles from '@/components/Particles';
+import AnimatedBackground from '@/components/AnimatedBackground';
+import InteractiveProfileCard from '@/components/InteractiveProfileCard';
 import { supabase } from '@/integrations/supabase/client';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { toast } from "sonner";
 
 const formatViewCount = (count: number): string => {
@@ -75,97 +69,13 @@ const Profile = () => {
     };
   }, []);
 
-  // ... keep existing code (JSX for the profile component)
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
       <BackgroundMusic />
-      <Particles />
+      <AnimatedBackground />
 
-      <div className="relative flex flex-col items-center z-10">
-        <img
-          src="/491e98a2c3e81f3efb34db8f9e4c62a8.jpg"
-          alt="Profile"
-          onError={(e) => (e.currentTarget.src = '/fallback-profile.png')}
-          className="w-32 h-32 rounded-full border-2 border-white/20 object-cover"
-        />
-        
-        <div className="relative flex items-center justify-center mt-2">
-          <span 
-            className="text-2xl text-white animate-pulse"
-            style={{
-              filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)',
-            }}
-          >
-            ☆
-          </span>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <img 
-                  src="/verificado.png" 
-                  alt="Verificado" 
-                  className="w-3 h-3 absolute right-[-12px] top-1/2 transform -translate-y-1/2" 
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Verificado</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
-      </div>
-
-      <p className="mt-8 mb-6 text-center max-w-md px-4 text-lg text-white z-10">
-        Behind the scenes of cyber darkness, my code is the shadow that strikes fear and respect. 💻
-      </p>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-4 mb-8 z-10 justify-center">
-        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-          <img src="/programador.png" alt="Programador Logo" className="w-5 h-5" />
-          Programador
-        </span>
-        <span className="flex items-center gap-2 px-4 py-1 rounded-full bg-black text-white border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] text-sm">
-          <img src="/ciber-seguranca.png" alt="Cybersecurity Logo" className="w-5 h-5" />
-          Cybersecurity
-        </span>
-      </div>
-
-      <div className="flex flex-col items-center gap-4 w-full max-w-md px-4 z-10">
-        {/* Redes sociais */}
-        <div className="flex gap-4 justify-center">
-          <SocialLink
-            href="https://instagram.com/xo.duxs"
-            className="!px-3 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/instagram.png" alt="Instagram" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink
-            href="https://tiktok.com/@tsx.duxs"
-            className="!px-3 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/tik-tok.png" alt="TikTok" className="w-5 h-5" />
-          </SocialLink>
-          <SocialLink
-            href="https://discord.gg/yf8QdyBR"
-            className="!px-3 !bg-[#5865F2]/20 hover:!bg-[#5865F2]/40 transition-transform transform hover:scale-110 duration-300"
-          >
-            <img src="/discordia.png" alt="Discord" className="w-5 h-5" />
-          </SocialLink>
-        </div>
-
-        {/* Spotify */}
-        <a
-          href="https://open.spotify.com/user/31jau7m672eiyksjzvall2knoh3m?si=JqY6YUoZT-u0K-hdb1cpAg"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 px-6 py-3 rounded-lg bg-[#1DB954]/20 hover:bg-[#1DB954]/40"
-        >
-          <img src="/spotify.png" alt="Spotify" className="w-7 h-7" />
-          <span className="text-white text-base font-medium">Spotify</span>
-        </a>
+      <div className="relative z-10">
+        <InteractiveProfileCard />
       </div>
 
       {/* View Counter */}
