@@ -1,90 +1,105 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import InteractiveProfileCard from '@/components/InteractiveProfileCard';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from "sonner";
-
-const formatViewCount = (count: number): string => {
-  if (count >= 1000000) {
-    return `${Math.floor(count / 1000000)}M`;
-  } else if (count >= 1000) {
-    return `${Math.floor(count / 1000)}k`;
-  }
-  return count.toString();
-};
+import { Settings, LogOut } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/integrations/auth/AuthContext';
 
 const Profile = () => {
-  const [viewCount, setViewCount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [profileSettings, setProfileSettings] = useState({
+    musicUrl: '',
+    bannerImageUrl: '',
+    themeColor: ''
+  });
+  const { signOut, user } = useAuth();
 
   useEffect(() => {
-    const fetchViewCount = async () => {
+    // Buscar configurações de perfil
+    const fetchProfileSettings = async () => {
       try {
-        const { data: viewData, error: fetchError } = await supabase
-          .from('profile_views')
-          .select('view_count')
-          .order('last_updated', { ascending: false })
-          .limit(1)
-          .single();
-
-        if (fetchError) {
-          console.error('Error fetching view count:', fetchError);
-          toast.error('Failed to load view count');
+        // Se não há usuário autenticado, não buscar dados
+        if (!user) {
           setIsLoading(false);
           return;
         }
 
-        setViewCount(viewData.view_count);
+        const { data, error } = await supabase
+          .from('profile_settings')
+          .select('music_url, banner_image_url, theme_color')
+          .eq('user_id', user.id)
+          .maybeSingle();
+
+        if (error) {
+          console.error('Erro ao carregar configurações do perfil:', error);
+          setIsLoading(false);
+          return;
+        }
+
+        if (data) {
+          setProfileSettings({
+            musicUrl: data.music_url || '',
+            bannerImageUrl: data.banner_image_url || '',
+            themeColor: data.theme_color || ''
+          });
+        }
         setIsLoading(false);
       } catch (error) {
-        console.error('Error:', error);
-        toast.error('Failed to load view count');
+        console.error('Erro:', error);
         setIsLoading(false);
       }
     };
 
-    fetchViewCount();
+    fetchProfileSettings();
+  }, [user]);
 
-    // Subscribe to realtime changes
-    const channel = supabase
-      .channel('profile_views_changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'profile_views'
-        },
-        (payload: any) => {
-          if (payload.new?.view_count) {
-            setViewCount(payload.new.view_count);
-          }
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, []);
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      toast.success('Logout realizado com sucesso');
+    } catch (error) {
+      toast.error('Erro ao fazer logout');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
-      <BackgroundMusic />
-      <AnimatedBackground />
+      <BackgroundMusic customMusicUrl={profileSettings.musicUrl} />
+      <AnimatedBackground
+        customBannerUrl={profileSettings.bannerImageUrl}
+        customThemeColor={profileSettings.themeColor}
+      />
+
+      {/* Botão de Personalização no Canto Superior Esquerdo */}
+      <Link
+        to="/customize"
+        className="fixed top-4 left-4 z-50"
+      >
+        <Button
+          variant="outline"
+          className="bg-black/20 border border-white/20 backdrop-blur-md hover:bg-black/40"
+        >
+          <Settings className="w-5 h-5 mr-2" />
+          Personalizar
+        </Button>
+      </Link>
+
+      {/* Botão de Logout no Canto Superior Direito */}
+      <Button
+        onClick={handleLogout}
+        variant="outline"
+        className="fixed top-4 right-20 z-50 bg-black/20 border border-white/20 backdrop-blur-md hover:bg-black/40"
+      >
+        <LogOut className="w-5 h-5 mr-2" />
+        Sair
+      </Button>
 
       <div className="relative z-10">
         <InteractiveProfileCard />
-      </div>
-
-      {/* View Counter */}
-      <div className="mt-12 flex items-center gap-2 text-white/60 z-10">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-        </svg>
-        <span>{isLoading ? "..." : viewCount !== null ? formatViewCount(viewCount) : "..."}</span>
       </div>
     </div>
   );

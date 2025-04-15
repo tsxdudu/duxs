@@ -6,9 +6,89 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
+// Definindo o tipo de Tag para ser usado na aplicação
+export type Tag = {
+  text: string;
+  icon: string;
+};
+
+export type ProfileSettings = {
+  user_id: string;
+  profile_image_url?: string;
+  banner_image_url?: string;
+  music_url?: string;
+  bio?: string;
+  tags?: Tag[];
+  theme_color?: string;
+  social_links?: {
+    instagram?: string;
+    tiktok?: string;
+    discord?: string;
+    spotify?: string;
+  };
+  star_icon?: string;
+  verified_icon?: string;
+  username?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
+      profile_settings: {
+        Row: {
+          id: number
+          user_id: string | null
+          username: string | null
+          profile_image_url: string | null
+          banner_image_url: string | null
+          music_url: string | null
+          music_file: string | null
+          bio: string | null
+          tags: Json | null
+          theme_color: string | null
+          social_links: Json | null
+          star_icon: string | null
+          verified_icon: string | null
+        }
+        Insert: {
+          id?: never
+          user_id?: string | null
+          username?: string | null
+          profile_image_url?: string | null
+          banner_image_url?: string | null
+          music_url?: string | null
+          music_file?: string | null
+          bio?: string | null
+          tags?: Json | null
+          theme_color?: string | null
+          social_links?: Json | null
+          star_icon?: string | null
+          verified_icon?: string | null
+        }
+        Update: {
+          id?: never
+          user_id?: string | null
+          username?: string | null
+          profile_image_url?: string | null
+          banner_image_url?: string | null
+          music_url?: string | null
+          music_file?: string | null
+          bio?: string | null
+          tags?: Json | null
+          theme_color?: string | null
+          social_links?: Json | null
+          star_icon?: string | null
+          verified_icon?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profile_settings_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       profile_views: {
         Row: {
           id: number
@@ -32,7 +112,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_view_count: {
+        Args: { profile_id: number };
+        Returns: number;
+      };
     }
     Enums: {
       [_ in never]: never
